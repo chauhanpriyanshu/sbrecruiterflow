@@ -78,7 +78,7 @@ function JobCard(props) {
         <p>{props.data.description}</p>
         <div className='bottom-cta'>
             <span><img src={Icon_Location} alt="icon-location" />{props.data.location}</span>
-            <button onClick={()=>{handleViewJobs(props.data.id)}}>Apply</button>
+            <button onClick={()=>{handleViewJobs(props.data.id)}}>View</button>
         </div>
         <StyledModal
             aria-labelledby="unstyled-modal-title"
