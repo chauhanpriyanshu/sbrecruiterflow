@@ -11,12 +11,16 @@ import { checkIfNull } from '../utils/DataCheck';
 import { createImageFromInitials } from '../utils/ProfilePicGenerator';
 import { Link } from 'react-router-dom';
 import JobCard from '../components/JobCard';
+import { Pagination } from '@mui/material';
 
 
 function Dashboard(props) {
   const [profilePic, setprofilePic] = useState("");
 
-  const [jobsList, setjobsList] = useState([1]);
+  const [jobsList, setjobsList] = useState([]);
+
+  const [currentpage, setcurrentpage] = useState(0);
+  const [totalpages, settotalpages] = useState(0);
 
 
   useEffect(() => {
@@ -32,8 +36,27 @@ function Dashboard(props) {
   }, []);
 
   useEffect(() => {
+    if(currentpage>=1&&currentpage<=totalpages){
+      props.getJobs({
+        "page": currentpage
+      });
+    }
+  }, [currentpage]);
+  
+
+  useEffect(() => {
     if(props.recruiter.getJobsSuccess===true){
-      setjobsList(props.recruiter.jobs.data.data)
+      // let arr = [
+      //   ...jobsList,
+      //   props.recruiter.jobs.data.data
+      // ]
+      // setjobsList([].concat(...arr))
+      setjobsList([
+        ...jobsList,
+        props.recruiter.jobs.data.data
+      ])
+      settotalpages(Math.ceil(props.recruiter.jobs.data.metadata.count/props.recruiter.jobs.data.metadata.limit))
+      setcurrentpage(currentpage+1)
       props.getJobsInit();
     }
     if(props.recruiter.getJobsFailure===true){
@@ -42,7 +65,10 @@ function Dashboard(props) {
     
   }, [props.recruiter]);
   
-  
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
   
 
   return (
@@ -63,12 +89,13 @@ function Dashboard(props) {
         <h2>Jobs posted by you</h2>
         <div className='job-container'>
           {
-            (jobsList!=null)?
+            (jobsList!=null && currentpage>totalpages)?
             <div className='job-card-block'>
               {
-                (jobsList.map((value,index)=>(
+                (jobsList.length>0)?
+                (jobsList[page].map((value,index)=>(
                   <JobCard key={index} data={value} />
-                )))
+                ))):null
               }
             </div>
             :
@@ -77,6 +104,9 @@ function Dashboard(props) {
               Your posted jobs will show here!
             </div>
           }
+        </div>
+        <div className='pagination-container'>
+          <Pagination count={totalpages} page={page} onChange={handleChange} variant="outlined" shape="rounded" />
         </div>
       </div> 
     </WebBody>
