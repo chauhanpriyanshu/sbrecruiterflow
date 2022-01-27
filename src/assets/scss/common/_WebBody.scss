@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    background: #EDF6FF;
+    overflow-x: hidden;
+}
+
+.mj-back-splash{
+    height: 464px;
+    width: 100vw;
+    z-index: -1;
+    position: absolute;
+    background: transparent linear-gradient(253deg, #303f60 0%, #1A253C 100%) 0% 0% no-repeat padding-box;
+}
+
+.mj-body{
+    min-height: 100vh;
+}

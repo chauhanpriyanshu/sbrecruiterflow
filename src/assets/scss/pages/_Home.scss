@@ -1,0 +1,95 @@
+.home-body{
+    max-width: 1083px;
+    margin: 0 auto;
+    margin-top: 61px;
+    .home-head{
+        display: flex;
+        justify-content: space-between;
+
+        h1{
+            width: 334px;
+            font-size: 60px;
+            color: #fff;
+            span{
+                font-weight: 500;
+                .txt-b{
+                    color: #43afff;
+                }
+            }
+        }
+
+        .home-cta{
+            width: 148px;
+            height: 46px;
+            background: #43afff 0% 0% no-repeat padding-box;
+            border: 1px solid #43afff;
+            background: #43AFFF 0% 0% no-repeat padding-box;
+            border: 1px solid #43AFFF;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 0px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .splash-img{
+            width: 622px;
+            height: 395px;
+            border-radius: 20px;
+            box-shadow: 0px 30px 36px #557DA526;
+        }
+    }
+
+
+    .home-static{
+        margin-top: 80px;
+        h2{
+            font-size: 22px;
+            margin-bottom: 40px;
+        }
+
+        .static-card-container{
+            display: flex;
+            justify-content: space-between;
+            .card{
+                background-color: #fff;
+                box-shadow: 0px 3px 6px #557DA526;
+                padding: 24px 20px 30px 20px;
+                width: 301px;
+                border-radius: 5px;
+
+                h2{
+                    width: 172px;
+                    height: 53px;
+                    text-align: left;
+                    letter-spacing: 0px;
+                    color: #43AFFF;
+                    font-size: 22px;
+                    font-weight: 500;
+                }
+
+                p{
+                    width: 301px;
+                    font-size: 14px;
+                }
+            }
+        }
+
+
+        .company-container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: -55px;
+            margin-bottom: 67px;
+            img{
+                margin-top: 55px;
+                margin-right: 112px;
+                height: 40px;
+                &:nth-child(5){
+                    margin-right: 0px;
+                }
+            }
+        }
+    }
+}
