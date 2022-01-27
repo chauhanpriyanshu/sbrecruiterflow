@@ -8,7 +8,6 @@ import { styled } from '@mui/system';
 import ModalUnstyled from '@mui/base/ModalUnstyled';
 import { connect } from 'react-redux';
 import { checkIfExist } from '../utils/DataCheck';
-import { createImageFromInitials } from '../utils/ProfilePicGenerator';
 import ApplicationCard from './ApplicationCard';
 
 const StyledModal = styled(ModalUnstyled)`
@@ -34,15 +33,6 @@ const Backdrop = styled('div')`
   -webkit-tap-highlight-color: transparent;
 `;
 
-const style = {
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  p: 2,
-  px: 4,
-  pb: 3,
-};
-
 function JobCard(props) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -61,7 +51,7 @@ function JobCard(props) {
     useEffect(() => {
 
         if(props.recruiter.getCandidatesSuccess===true){
-            if(checkIfExist("data",props.recruiter.candidates)==true){
+            if(checkIfExist("data",props.recruiter.candidates)===true){
                 settotalApplications(props.recruiter.candidates.data.length)
                 setapplicationsData(props.recruiter.candidates.data)
             }
@@ -92,7 +82,7 @@ function JobCard(props) {
                 <p>Total {totalApplications} applications</p>
                 <div className='application-container'>
                     {
-                        (totalApplications==0)?
+                        (totalApplications===0)?
                         <div className='no-data'><img src={Icon_Curriculum} alt="curriculum"/>No applications available!</div>
                         :    
                         applicationsData.map((value,index)=>(

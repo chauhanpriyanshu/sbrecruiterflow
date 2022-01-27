@@ -43,13 +43,6 @@ function Login(props) {
     }
   }, [props.auth]);
 
-
-  // useEffect(() => {
-  //   props.storeInit();
-  // }, []);
-  
-  
-
   return (
     <WebBody>
       <Header>
