@@ -10,6 +10,10 @@ body{
     z-index: -1;
     position: absolute;
     background: transparent linear-gradient(253deg, #303f60 0%, #1A253C 100%) 0% 0% no-repeat padding-box;
+
+    &.mini-splash{
+        height: 210px;
+    }
 }
 
 .mj-body{

@@ -3,7 +3,7 @@ import API from './interceptor';
 export function fetchJobs(payload){
     return API({
       method: 'GET',
-      url: `/recruiters/jobs`,
+      url: `/recruiters/jobs?page=${payload.page}`,
       data: payload
     })
 }

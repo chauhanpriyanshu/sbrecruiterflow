@@ -1,9 +1,9 @@
 import React from 'react';
 
-function WebBody({ children }) {
+function WebBody({ children, classes }) {
     return (
         <>
-            <div className='mj-back-splash'></div>
+            <div className={`mj-back-splash ${(classes!=undefined)?classes:""}`}></div>
             <div className='mj-body'>
                 {children}
             </div>

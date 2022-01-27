@@ -7,7 +7,7 @@ function* findJobs(action){
     try{
         const response = yield call (
             fetchJobs,
-            action.payload
+            action.payload.user
         )
         if(response.status === 200){
             yield put(getJobsSuccess(response.data))
@@ -25,7 +25,7 @@ function* findCandidates(action){
     try{
         const response = yield call (
             fetchCandidates,
-            action.payload
+            action.payload.user
         )
         if(response.status === 200){
             yield put(getCandidatesSuccess(response.data))

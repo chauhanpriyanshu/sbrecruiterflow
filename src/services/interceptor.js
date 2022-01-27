@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from './../store/index';
+import { store } from './../store/index';
 
 const baseURL = "https://jobs-api.squareboat.info/api/v1"
 
@@ -11,7 +11,7 @@ let primaryServer = axios.create({
 })
 primaryServer.interceptors.request.use(
     (response) => {
-        const token = (store.getState().Auth.userDetails) ? store.getState().Auth.userDetails.data.token : null;
+        const token = (store.getState().Auth.userDetails) ? store.getState().Auth.userDetails.token : null;
         if(token != null){
             response.headers.Authorization = `${token}`;
         }

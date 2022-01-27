@@ -16,10 +16,12 @@ function Login(props) {
   const [loginfailed, setloginfailed] = useState(false);
 
   function handleInputEmail(email){
+    setloginfailed(false)
     setemail(email)
   }
 
   function handleInputPassword(password){
+    setloginfailed(false)
     setpassword(password)
   }
 
@@ -42,9 +44,9 @@ function Login(props) {
   }, [props.auth]);
 
 
-  useEffect(() => {
-    props.storeInit();
-  }, []);
+  // useEffect(() => {
+  //   props.storeInit();
+  // }, []);
   
   
 
